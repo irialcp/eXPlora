@@ -48,6 +48,9 @@ export default function MapScreen() {
     const nextLevelXP = 1500;
     const currentLevel = 7;
 
+    // Variabile per controllare se è premium (con fallback sicuro)
+    const isPremium = user?.isPremium || false;
+
     useEffect(() => {
         getCurrentLocation();
         const interval = setInterval(updateEvents, 30000);
@@ -81,10 +84,10 @@ export default function MapScreen() {
     }, []);
 
     useEffect(() => {
-        if (userLocation && !user?.isPremium) {
+        if (userLocation && !isPremium) {
             filterEventsByRadius(5);
         }
-    }, [userLocation, user]);
+    }, [userLocation, isPremium]);
 
     const getCurrentLocation = async () => {
         try {
@@ -219,7 +222,7 @@ export default function MapScreen() {
                 mapPadding={{
                     top: 120,
                     right: 20,
-                    bottom: user?.isPremium ? 20 : 100,
+                    bottom: isPremium ? 20 : 100,
                     left: 20,
                 }}
             >
@@ -280,7 +283,7 @@ export default function MapScreen() {
             </MapView>
 
             {/* Gaming HUD Bottom */}
-            <View style={styles.gamingHUD}>
+            <View style={[styles.gamingHUD, { bottom: isPremium ? 30 : 110 }]}>
                 <TouchableOpacity
                     style={styles.centerButton}
                     onPress={centerOnUser}
@@ -297,7 +300,7 @@ export default function MapScreen() {
             </View>
 
             {/* Banner Premium/Free con stile gaming */}
-            {!user?.isPremium && (
+            {!isPremium && (
                 <View style={styles.limitBanner}>
                     <GamingCard variant="secondary" style={styles.limitCard}>
                         <View style={styles.limitContent}>
@@ -394,7 +397,6 @@ const styles = StyleSheet.create({
     },
     gamingHUD: {
         position: 'absolute',
-        bottom: user?.isPremium ? 30 : 110,
         left: theme.spacing.md,
         right: theme.spacing.md,
         flexDirection: 'row',

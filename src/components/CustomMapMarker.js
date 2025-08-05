@@ -1,6 +1,6 @@
-// Marker gaming personalizzati
+// src/components/CustomMapMarker.js - Marker gaming personalizzati (versione corretta)
 import React from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const colors = require('../styles/colors');
@@ -57,7 +57,7 @@ export const CustomMapMarker = ({
         <View style={styles.markerContainer}>
             {/* Effetto glow animato */}
             {glowing && (
-                <Animated.View
+                <View
                     style={[
                         styles.glowEffect,
                         {
@@ -104,21 +104,6 @@ export const CustomMapMarker = ({
                     { borderTopColor: config.color }
                 ]}
             />
-
-            {/* Pulse effect per marker attivi */}
-            {isActive && (
-                <Animated.View
-                    style={[
-                        styles.pulseEffect,
-                        {
-                            width: markerSize + 10,
-                            height: markerSize + 10,
-                            borderRadius: (markerSize + 10) / 2,
-                            borderColor: colors.xpGold,
-                        }
-                    ]}
-                />
-            )}
         </View>
     );
 };
@@ -134,7 +119,6 @@ export const UserLocationMarker = ({ level = 1 }) => {
                     <Text style={styles.levelText}>{level}</Text>
                 </View>
             </View>
-            <View style={styles.userPulse} />
         </View>
     );
 };
@@ -184,11 +168,6 @@ const styles = StyleSheet.create({
         borderLeftColor: 'transparent',
         borderRightColor: 'transparent',
     },
-    pulseEffect: {
-        position: 'absolute',
-        borderWidth: 2,
-        opacity: 0.5,
-    },
 
     // User marker styles
     userMarkerContainer: {
@@ -235,14 +214,5 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 'bold',
         color: colors.textOnSecondary,
-    },
-    userPulse: {
-        position: 'absolute',
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        borderWidth: 2,
-        borderColor: colors.primary,
-        opacity: 0.6,
     },
 });
