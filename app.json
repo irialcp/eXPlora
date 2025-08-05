@@ -1,33 +1,46 @@
 {
   "expo": {
-    "name": "eXPlora",
-    "slug": "explora",
+    "name": "CityQuest Gaming",
+    "slug": "cityquest-gaming",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#17726d"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "YOUR_GOOGLE_MAPS_API_KEY_HERE"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#17726d"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBiYLExPuuJ7t2QJZELwhuqcWzc8vP9ohg"
+        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-location"
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Questa app ha bisogno della posizione per mostrarti eventi nelle vicinanze."
+        }
+      ]
     ]
   }
 }

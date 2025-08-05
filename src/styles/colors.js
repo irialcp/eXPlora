@@ -1,4 +1,5 @@
-export const colors = {
+// src/styles/colors.js
+const colors = {
     // Primary Teal Palette
     primary: '#17726d',
     primaryLight: '#4a9d97',
@@ -45,3 +46,7 @@ export const colors = {
     overlay: 'rgba(0, 0, 0, 0.5)',
     overlayLight: 'rgba(0, 0, 0, 0.3)',
 };
+
+module.exports = colors;
+module.exports.colors = colors;
+module.exports.default = colors;

@@ -1,7 +1,10 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, theme } from '../styles/theme';
+
+// Import con require per evitare problemi
+const colors = require('../styles/colors');
+const theme = require('../styles/theme');
 
 export const GamingButton = ({
                                  title,
@@ -161,11 +164,5 @@ const styles = StyleSheet.create({
         paddingVertical: 4,
         borderRadius: 12,
         marginLeft: theme.spacing.sm,
-    },
-    xpText: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: colors.xpGold,
-        marginLeft: 2,
     },
 });

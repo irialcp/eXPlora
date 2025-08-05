@@ -1,6 +1,7 @@
-import { colors } from './colors';
+// src/styles/theme.js
+const colors = require('./colors');
 
-export const theme = {
+const theme = {
     colors,
 
     // Gaming Typography
@@ -86,3 +87,8 @@ export const theme = {
         xxl: 48,
     }
 };
+
+module.exports = theme;
+module.exports.theme = theme;
+module.exports.colors = colors;
+module.exports.default = theme;
